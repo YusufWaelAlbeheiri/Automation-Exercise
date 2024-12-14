@@ -1,0 +1,24 @@
+{
+  "UserName": "Youssef",
+  "UserMail": "Youssef@testng.com",
+  "AccountInformation": {
+    "UserGenderMale": "Male",
+    "UserGenderFeMale": "FeMale",
+    "Password": "TestPassword",
+    "Day": "21",
+    "Month": "3",
+    "Year": "2000",
+    "FirstName": "FTestName",
+    "LastName": "LTestName"
+  },
+  "AddressInformation":{
+    "Company": "Company",
+    "Address1": "Address1",
+    "Address2": "Address2",
+    "Country": "Canada",
+    "State": "State",
+    "City": "City",
+    "ZipCode": "123123",
+    "MobileNumber": "123123"
+  }
+}
