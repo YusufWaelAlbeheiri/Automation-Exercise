@@ -13,7 +13,7 @@ public class DriverFactory {
     static WebDriver driver;
 
     @Step("open browser {browserName}")
-    public static WebDriver initiateDriver(String browserName, boolean maximize, String headless) {
+    public static WebDriver initiateDriver(String browserName, String headless) {
         if (browserName.equalsIgnoreCase("chrome")) {
             if (headless.equalsIgnoreCase("true")) {
                 ChromeOptions options = new ChromeOptions();

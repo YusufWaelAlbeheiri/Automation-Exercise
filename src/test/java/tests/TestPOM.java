@@ -56,7 +56,7 @@ public class TestPOM {
     public void setUP() {
 
         json = new JsonFileManager("src/test/resources/data.json");
-        driver = DriverFactory.initiateDriver(System.getProperty("browserName"), true);
+        driver = DriverFactory.initiateDriver(System.getProperty("browserName"),System.getProperty("headless"));
 
 
     }
