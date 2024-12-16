@@ -37,3 +37,4 @@ jobs:
           with:
             name: Tests Report
             path: 'target/surefire-reports'
+            reporter : java-junit
