@@ -29,18 +29,16 @@ public class TestPOM {
         new HomePage(driver)
                 .navigate()
                 .asserThatUserISInHomePage();
-
         new NavBar(driver)
                 .clickOnSignUpLoginButton();
-
         new SignUpPage(driver)
                 .assertThatUserIsInSignupLoginPage()
                 .fillSignupForm(json.getTestData("UserName"), json.getTestData("UserMail"));
 
         new RegistrationForm(driver)
                 .asseertionOnEnterInfoTex()
-                .enterAccountInformation("wael", "karim","Password", "male", "24", "July", "2002")
-                .enterAddressInformation( "giza systems", "hadyaek el kobbah", "hadyaek el kobbah", "India", "cairo", "cairo", "134", "01231331234")
+                .enterAccountInformation("wael", "karim", "Password", "male", "24", "July", "2002")
+                .enterAddressInformation("giza systems", "hadyaek el kobbah", "hadyaek el kobbah", "India", "cairo", "cairo", "134", "01231331234")
                 .clickOnCreatAccountButton();
 
         new AccountCreated(driver)
@@ -58,7 +56,7 @@ public class TestPOM {
     public void setUP() {
 
         json = new JsonFileManager("src/test/resources/data.json");
-        driver=DriverFactory.initiateDriver(System.getProperty("browserName"),true);
+        driver = DriverFactory.initiateDriver(System.getProperty("browserName"), true);
 
 
     }
@@ -67,8 +65,9 @@ public class TestPOM {
     public void closing() {
         driver.quit();
     }
+
     @BeforeSuite
-    public void beforeSuite(){
+    public void beforeSuite() {
         PropertiesReader.loadProperties();
 
     }
