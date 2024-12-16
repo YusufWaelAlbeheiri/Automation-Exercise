@@ -10,7 +10,7 @@ on:
 
   # Trigger workflow every 10 minutes
   schedule:
-    - cron: '*/10 * * * *'
+    - cron: '*/5 * * * *'
 
   # Trigger workflow when a PR is created or updated for the main branch
   pull_request:
@@ -49,7 +49,7 @@ jobs:
           name: Tests Report Edge_Windows
           path: 'target/surefire-reports/TEST-*.xml'
           reporter: java-junit
-  Remote_Tests_Execution_Ubuntu:
+  Remote_Tests_Execution_Ubuntu_In_Chrome:
     runs-on: ubuntu-latest
     permissions:
       checks: write
@@ -68,7 +68,7 @@ jobs:
         with:
           maven-version: 3.9.6
 
-      - name: Run Tests in Headless Mode
+      - name: Run Tests in Headless Mode in chrome
         continue-on-error: true
         run: mvn -DBrowserName="chrome" -DHeadLessBrowsing="true" -Dtest="${{ github.event.inputs.testsPath}}" test
 

@@ -5,31 +5,42 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
-
-import java.util.Properties;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class DriverFactory {
     static WebDriver driver;
+
     @Step("open browser {browserName}")
-    public static WebDriver initiateDriver(String browserName, boolean maximize) {
-        boolean isHeadless = Boolean.parseBoolean(System.getProperty("headless", "false"));
-
+    public static WebDriver initiateDriver(String browserName, boolean maximize, String headless) {
         if (browserName.equalsIgnoreCase("chrome")) {
-            ChromeOptions chromeOptions = new ChromeOptions();
-            if (isHeadless) {
-                chromeOptions.addArguments("--headless");
-                chromeOptions.addArguments("--disable-gpu", "--window-size=1920,1080", "--no-sandbox", "--disable-dev-shm-usage");
+            if (headless.equalsIgnoreCase("true")) {
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--headless", "--disable-gpu");
+                driver = new ChromeDriver(options);
+            } else {
+                driver = new ChromeDriver();
             }
-            driver = new ChromeDriver(chromeOptions);
-            System.out.println("Initializing Chrome Browser on OS: " + System.getProperty("os.name") + " and version: " + System.getProperty("os.version"));
-
+            System.out.println("intializing Chrome Browser on OS : " + System.getProperty("os.name") + "and the version is " + System.getProperty("os.version"));
         } else if (browserName.equalsIgnoreCase("firefox")) {
+            if (headless.equalsIgnoreCase("true")) {
+                FirefoxOptions options = new FirefoxOptions();
+                options.addArguments("--headless", "--disable-gpu");
+                driver = new FirefoxDriver(options);
+            } else {
+                driver = new FirefoxDriver();
+            }
             System.out.println("intializing firefox Browser on OS : " + System.getProperty("os.name") + "and the version is " + System.getProperty("os.version"));
-            driver = new FirefoxDriver();
         } else if (browserName.equalsIgnoreCase("edge")) {
             System.out.println("intializing Edge Browser on OS : " + System.getProperty("os.name") + "and the version is " + System.getProperty("os.version"));
-            driver = new EdgeDriver();
+            if (headless.equalsIgnoreCase("true")) {
+                EdgeOptions options = new EdgeOptions();
+                options.addArguments("--headless", "--disable-gpu");
+                driver = new EdgeDriver(options);
+            } else {
+                driver = new EdgeDriver();
+            }
         }
         if (maximize) {
             driver.manage().window().maximize();
