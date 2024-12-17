@@ -40,15 +40,6 @@ jobs:
       - name: Run Tests
         continue-on-error: true
         run: mvn -DbrowserName="edge" -Dheadless="false" -Dtest="${{github.event.inputs.testsPath}}" test
-
-      - name: Publish Report
-        continue-on-error: true
-        uses: dorny/test-reporter@v1
-        if: success() || failure()
-        with:
-          name: Tests Report Edge_Windows
-          path: 'target/surefire-reports/TEST-*.xml'
-          reporter: java-junit
       - name: Generate Allure Report
         continue-on-error: true
         run: mvn allure:report
@@ -58,6 +49,15 @@ jobs:
         with:
           name: Allure Report Windows edge
           path: target/site/allure-maven-plugin/index.html
+      - name: Publish Report
+        continue-on-error: true
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: Tests Report Edge_Windows
+          path: 'target/surefire-reports/TEST-*.xml'
+          reporter: java-junit
+
   Remote_Tests_Execution_Ubuntu_In_Chrome:
     runs-on: ubuntu-latest
     permissions:
@@ -80,15 +80,6 @@ jobs:
       - name: Run Tests in Headless Mode in chrome
         continue-on-error: true
         run: mvn -DBrowserName="chrome" -Dheadless="true" -Dtest="${{ github.event.inputs.testsPath}}" test
-
-      - name: Publish Report
-        continue-on-error: true
-        uses: dorny/test-reporter@v1
-        if: success() || failure()
-        with:
-          name: Tests Report Headless_Ubuntu
-          path: 'target/surefire-reports/TEST-*.xml'
-          reporter: java-junit
       - name: Generate Allure Report
         continue-on-error: true
         run: mvn allure:report
@@ -98,3 +89,11 @@ jobs:
         with:
           name: Allure Report Ubuntu Test
           path: target/site/allure-maven-plugin/index.html
+      - name: Publish Report
+        continue-on-error: true
+        uses: dorny/test-reporter@v1
+        if: success() || failure()
+        with:
+          name: Tests Report Headless_Ubuntu
+          path: 'target/surefire-reports/TEST-*.xml'
+          reporter: java-junit
