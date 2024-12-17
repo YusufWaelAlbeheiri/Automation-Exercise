@@ -15,7 +15,7 @@ public class DriverFactory {
     @Step("open browser {browserName}")
     public static WebDriver initiateDriver(String browserName,boolean maximize, String headless) {
         if (browserName.equalsIgnoreCase("chrome")) {
-            if (headless.equalsIgnoreCase("true")) {
+            if (headless.equalsIgnoreCase("headless")) {
                 ChromeOptions options = new ChromeOptions();
                 options.addArguments("--headless", "--disable-gpu");
                 driver = new ChromeDriver(options);
@@ -24,7 +24,7 @@ public class DriverFactory {
             }
             System.out.println("intializing Chrome Browser on OS : " + System.getProperty("os.name") + "and the version is " + System.getProperty("os.version"));
         } else if (browserName.equalsIgnoreCase("firefox")) {
-            if (headless.equalsIgnoreCase("true")) {
+            if (headless.equalsIgnoreCase("headless")) {
                 FirefoxOptions options = new FirefoxOptions();
                 options.addArguments("--headless", "--disable-gpu");
                 driver = new FirefoxDriver(options);
@@ -34,7 +34,7 @@ public class DriverFactory {
             System.out.println("intializing firefox Browser on OS : " + System.getProperty("os.name") + "and the version is " + System.getProperty("os.version"));
         } else if (browserName.equalsIgnoreCase("edge")) {
             System.out.println("intializing Edge Browser on OS : " + System.getProperty("os.name") + "and the version is " + System.getProperty("os.version"));
-            if (headless.equalsIgnoreCase("true")) {
+            if (headless.equalsIgnoreCase("headless")) {
                 EdgeOptions options = new EdgeOptions();
                 options.addArguments("--headless", "--disable-gpu");
                 driver = new EdgeDriver(options);

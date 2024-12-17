@@ -8,11 +8,9 @@ on:
         default: ''
 
 
-  # Trigger workflow every 10 minutes
   schedule:
     - cron: '*/5 * * * *'
 
-  # Trigger workflow when a PR is created or updated for the main branch
   pull_request:
     branches:
       - main
@@ -39,7 +37,7 @@ jobs:
 
       - name: Run Tests
         continue-on-error: true
-        run: mvn -DbrowserName="edge" -Dheadless="false" -Dtest="${{github.event.inputs.testsPath}}" test
+        run: mvn -DbrowserName="edge" -Dheadless=false -Dtest="${{github.event.inputs.testsPath}}" test
       - name: Generate Allure Report
         continue-on-error: true
         run: mvn allure:report
@@ -79,7 +77,7 @@ jobs:
 
       - name: Run Tests in Headless Mode in chrome
         continue-on-error: true
-        run: mvn -DBrowserName="chrome" -Dheadless="true" -Dtest="${{ github.event.inputs.testsPath}}" test
+        run: mvn -DBrowserName="chrome" -Dheadless=headless -Dtest="${{ github.event.inputs.testsPath}}" test
       - name: Generate Allure Report
         continue-on-error: true
         run: mvn allure:report
