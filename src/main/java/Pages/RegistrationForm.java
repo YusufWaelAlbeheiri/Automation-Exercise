@@ -18,7 +18,7 @@ public class RegistrationForm {
     private By yearDropdown = By.id("years");
     private By newsletterCheckbox = By.id("newsletter");
     private By optinCheckbox = By.id("optin");
-    private By createAccountButton = By.xpath("//button[@data-qa='create-account']");
+    private By createAccountButton = By.xpath("//button[@type='submit']");
     private By firstName = By.id("first_name");
     private By secondName = By.name("last_name");
     private By companyName = By.id("company");
