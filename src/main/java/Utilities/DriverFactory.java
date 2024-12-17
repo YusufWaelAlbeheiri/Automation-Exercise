@@ -14,7 +14,7 @@ public class DriverFactory {
 
     @Step("open browser {browserName}")
     public static WebDriver initiateDriver(String browserName,boolean maximize, boolean headless) {
-        if (browserName.equalsIgnoreCase("chrome")) {
+        if (browserName.equalsIgnoreCase("Chrome")) {
             if (Boolean.TRUE.equals(headless)) {
 
                 ChromeOptions options = new ChromeOptions();
