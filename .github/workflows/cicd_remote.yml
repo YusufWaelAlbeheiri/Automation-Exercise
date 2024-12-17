@@ -5,11 +5,11 @@ on:
     inputs:
       testsPath:
         description: 'Path to Tests to be Executed'
-        default: ''
+        default: 'tests.TestPOM'
 
 
   schedule:
-    - cron: '0 14 * * *'
+    - cron: '20 13 * * *'
 
   pull_request:
     branches:
