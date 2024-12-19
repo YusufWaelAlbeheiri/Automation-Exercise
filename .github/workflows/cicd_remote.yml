@@ -8,8 +8,8 @@ on:
         default: 'tests.TestPOM'
 
 
-  schedule:
-    - cron: '*/10 * * * *'
+  # schedule:
+  #   - cron: '*/10 * * * *'
 
   pull_request:
     branches:
